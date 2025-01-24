@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Diego/Diego_Scene.unity
+- path: Assets/Javi/MainScene.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
