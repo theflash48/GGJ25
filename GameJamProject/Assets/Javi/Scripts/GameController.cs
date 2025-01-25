@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    public enum GameState{Menu, Intro, Gameplay, Minigame, Cinematic}
+    public enum GameState{Menu, Intro, Gameplay, Bubble, Minigame, Cinematic}
     public GameState State;
 
     public GameObject panelMenu;
