@@ -44,13 +44,12 @@ public class PlayerController : MonoBehaviour
         // Si no hay input, cambia a estado de inactividad
         if (movementVector2 != Vector2.zero)
         {
-            animator.SetBool("Idle", true);
-            animator.Play("walk");
+            animator.SetBool("Running", true);
             targetRotation = Mathf.Atan2(movementVector2.x, movementVector2.y) * Mathf.Rad2Deg;
         }
         else
         {
-            animator.SetBool("Idle", false);
+            animator.SetBool("Running", false);
         }
 
         float rotation = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetRotation, ref rotationSpeed, rotationSmoothTime);
