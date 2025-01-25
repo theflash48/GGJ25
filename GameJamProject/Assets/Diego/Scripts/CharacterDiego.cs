@@ -5,8 +5,7 @@ using UnityEngine.InputSystem;
 
 public class CharacterDiego : MonoBehaviour
 {
-    public float Maxspeed, speed, JumpHeight, RotationSmoothTime = 0.1f, Gravity = -15.0f, GroundedRadius = 0.28f, GroundedOffset = -1f, mVelocidadVertical, rbForce, interactDistance;
-    public LayerMask GroundLayers;
+    public float Maxspeed, speed, JumpHeight, RotationSmoothTime = 0.1f, mVelocidadVertical, rbForce, interactDistance;
     public bool mIsJumping2, mIsGrounded = true, canRotate = true, isDragging, isPickingUp, isPickingFinished;
     public int isDraggingWhere;
     private Vector2 mMovementVector;
@@ -17,7 +16,6 @@ public class CharacterDiego : MonoBehaviour
     private GameObject _mainCamera;
     private Vector3 slopeSlideVelocity;
     public Animator mCharacterAnimator;
-    private Vector3 slidingDirection, currentMovement;
 
 
     void Start()
@@ -101,27 +99,11 @@ public class CharacterDiego : MonoBehaviour
                 mCharacterAnimator.SetBool("IsMoving", false);
             }
 
-            // Movimiento si no esta aterrizando
-            if (!mIsJumping)
+
+            // Si no estamos cogiendo o arrastrando un objeto nos moveremos normalmente
+            if (!isPickingUp && !isDragging)
             {
-
-               
-
-                // Comprobamos si estamos cogiendo un objeto
-                if (isPickingUp)
-                {
-
-                    // Cuando terminemos la animación podremos movernos
-                    if (isPickingFinished) mController.Move(inputDirection * (speed * Time.deltaTime) + new Vector3(0.0f, mVelocidadVertical, 0.0f) * Time.deltaTime);
-
-                }
-
-                // Si no estamos cogiendo o arrastrando un objeto nos moveremos normalmente
-                if (!isPickingUp && !isDragging)
-                {
-                    mController.Move(inputDirection * (speed * Time.deltaTime) + new Vector3(0.0f, mVelocidadVertical, 0.0f) * Time.deltaTime);
-                }
-
+                mController.Move(inputDirection * (speed * Time.deltaTime) + new Vector3(0.0f, mVelocidadVertical, 0.0f) * Time.deltaTime);
             }
         }
 

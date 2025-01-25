@@ -4,7 +4,7 @@ using UnityEngine.Rendering;
 using UnityEngine.Rendering.PostProcessing;
 using Unity.VisualScripting;
 
-public class Sphere_ : MonoBehaviour
+public class Sphere_1 : MonoBehaviour
 {
     public Transform circleCenter;
     public GameObject sphere;
@@ -91,11 +91,30 @@ public class Sphere_ : MonoBehaviour
         UpdateTexture();
         //Debug.Log(ContadorPreguntas);
     }
+    void OnButtonPressed(string respuesta)
+    {
+        Debug.Log("Se presionó el botón: " + respuesta);
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag =="Player") {
+
+            ActivarCanvas.SetActive(true);
+            if (ValorAleatorio == 1) { Preguta1(); }
+            if (ValorAleatorio == 2) { Preguta2(); }
+            if (ValorAleatorio == 3) { Preguta3(); }
+
+            postProcessVolume.profile.TryGetSettings(out Vignette vignette);
+            vignette.intensity.value = 0.7f;
+
+        }
+    }
     public void Empezar() {
         if (!Terminado) {
             ActivarCanvas.SetActive(true);
             if (ValorAleatorio == 1) { Preguta1(); }
-            
+            if (ValorAleatorio == 2) { Preguta2(); }
+            if (ValorAleatorio == 3) { Preguta3(); }
 
             postProcessVolume.profile.TryGetSettings(out Vignette vignette);
             vignette.intensity.value = 0.7f;
@@ -112,6 +131,18 @@ public class Sphere_ : MonoBehaviour
             postProcessVolume.profile.TryGetSettings(out Vignette vignette);
             vignette.intensity.value = 0.0f;
         }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            ActivarCanvas.SetActive(false);
+
+            postProcessVolume.profile.TryGetSettings(out Vignette vignette);
+            vignette.intensity.value = 0.0f;
+
+        }
+
     }
 
     void Preguta1() {
@@ -159,7 +190,89 @@ public class Sphere_ : MonoBehaviour
 
 
     }
-    
+    void Preguta2() {
+        Estoy2 = true;
+        if (ContadorPreguntas == 0)
+        {
+            TextoPreguntas.text = "Preguta2";
+            TextoBoton1.text = "1";
+            TextoBoton2.text = "2";
+            TextoBoton3.text = "3";
+
+            Respuesta1.onClick.AddListener(() => RespuestaCorrecta());
+            Respuesta2.onClick.AddListener(() => RespuestaIncorrecta());
+            Respuesta3.onClick.AddListener(() => RespuestaIncorrecta());
+        }
+        if (ContadorPreguntas == 1)
+        {
+            
+            TextoPreguntas.text = "Preguta22";
+            TextoBoton1.text = "1";
+            TextoBoton2.text = "2";
+            TextoBoton3.text = "3";
+
+            Respuesta1.onClick.AddListener(() => RespuestaCorrecta());
+            Respuesta2.onClick.AddListener(() => RespuestaIncorrecta());
+            Respuesta3.onClick.AddListener(() => RespuestaIncorrecta());
+
+
+        }
+        if (ContadorPreguntas == 2)
+        {
+            TextoPreguntas.text = "Preguta222";
+            TextoBoton1.text = "1";
+            TextoBoton2.text = "2";
+            TextoBoton3.text = "3";
+
+            Respuesta1.onClick.AddListener(() => RespuestaCorrectaFinal());
+            Respuesta2.onClick.AddListener(() => RespuestaIncorrectaFinal());
+            Respuesta3.onClick.AddListener(() => RespuestaIncorrectaFinal());
+
+
+        }
+    }
+    void Preguta3() {
+        Estoy3 = true;
+        if (ContadorPreguntas == 0)
+        {
+            TextoPreguntas.text = "Preguta3";
+            TextoBoton1.text = "1";
+            TextoBoton2.text = "2";
+            TextoBoton3.text = "3";
+
+            Respuesta1.onClick.AddListener(() => RespuestaCorrecta());
+            Respuesta2.onClick.AddListener(() => RespuestaIncorrecta());
+            Respuesta3.onClick.AddListener(() => RespuestaIncorrecta());
+        }
+        if (ContadorPreguntas == 1)
+        {
+            
+            TextoPreguntas.text = "Preguta33";
+            TextoBoton1.text = "1";
+            TextoBoton2.text = "2";
+            TextoBoton3.text = "3";
+
+            Respuesta1.onClick.AddListener(() => RespuestaCorrecta());
+            Respuesta2.onClick.AddListener(() => RespuestaIncorrecta());
+            Respuesta3.onClick.AddListener(() => RespuestaIncorrecta());
+
+
+        }
+        if (ContadorPreguntas == 2)
+        {
+
+            TextoPreguntas.text = "Preguta333";
+            TextoBoton1.text = "1";
+            TextoBoton2.text = "2";
+            TextoBoton3.text = "3";
+
+            Respuesta1.onClick.AddListener(() => RespuestaCorrectaFinal());
+            Respuesta2.onClick.AddListener(() => RespuestaIncorrectaFinal());
+            Respuesta3.onClick.AddListener(() => RespuestaIncorrectaFinal());
+
+
+        }
+    }
 
 
     public void RespuestaFinal()
@@ -172,7 +285,8 @@ public class Sphere_ : MonoBehaviour
         ContadorPreguntas++;
         
         if (Estoy1) { Preguta1();  }
-        
+        if (Estoy2) { Preguta2();  }
+        if (Estoy3) { Preguta3();  }
 
 
     }
@@ -183,7 +297,8 @@ public class Sphere_ : MonoBehaviour
         radius = radius + 0.3f;
         UpdateTexture();
         if (Estoy1) { Preguta1();  }
-        
+        if (Estoy2) { Preguta2();  }
+        if (Estoy3) { Preguta3(); }
     }
     public void RespuestaCorrectaFinal() 
     {
@@ -230,7 +345,6 @@ public class Sphere_ : MonoBehaviour
 
                 float t = Mathf.Clamp01((uvRadius - distance) / uvRadius); 
                 Color pixelColor = Color.Lerp(outsideColor, circleColor, t);
-
 
                 texture.SetPixel(x, y, pixelColor);
             }
