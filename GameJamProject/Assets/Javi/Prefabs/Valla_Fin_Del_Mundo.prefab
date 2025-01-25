@@ -60,6 +60,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 5d9fd33de5a099a4888d5e78265e6f1c, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: bff447d90c9f7764f8b8cf5757aa4bfc, type: 2}
     - target: {fileID: 919132149155446097, guid: 5d9fd33de5a099a4888d5e78265e6f1c, type: 3}
       propertyPath: m_Name
       value: Valla_Fin_Del_Mundo
