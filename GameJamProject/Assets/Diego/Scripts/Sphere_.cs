@@ -44,7 +44,7 @@ public class Sphere_ : MonoBehaviour
         texture.filterMode = FilterMode.Bilinear; // Suavizado en la textura
         planeRenderer.material.mainTexture = texture;
         UpdateTexture();
-        //ActivarCanvas.SetActive(false);
+        ActivarCanvas.SetActive(false);
 
         int[] valores = { 1, 2, 3 };
 
@@ -55,9 +55,7 @@ public class Sphere_ : MonoBehaviour
 
         ContadorPreguntas = 0;
 
-        if (ValorAleatorio == 1) { Preguta1(); }
-        if (ValorAleatorio == 2) { Preguta2(); }
-        if (ValorAleatorio == 3) { Preguta3(); }
+        
 
         if (postProcessVolume == null)
         {
@@ -262,11 +260,13 @@ public class Sphere_ : MonoBehaviour
     public void RespuestaCorrectaFinal() 
     {
         radius = 0.0f; ActivarCanvas.SetActive(false);
+        Destroy(this.gameObject);
     }
     public void RespuestaIncorrectaFinal() 
     {
         radius = 10.0f;
         ActivarCanvas.SetActive(false);
+        //Destroy(this.gameObject);
     }
 
     void UpdateTexture()
