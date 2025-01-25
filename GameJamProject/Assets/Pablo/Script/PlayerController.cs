@@ -1,27 +1,34 @@
 using UnityEngine;
-using static PlayerController;
 
 public class PlayerController : MonoBehaviour
 {
-
     public float speed;
-    public float inputForce;
     public float inputX;
     public float inputZ;
-    public float rotation;
-
+    public float rotationSpeed;
+    public float gravity = -9.8f;  // Gravedad
+    public float verticalSpeed;  // Velocidad vertical (caída)
     public enum PlayerState { idle, walk };
     public PlayerState playerState;
 
     Animator animator;
+    CharacterController controller;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        animator = GetComponent<Animator>();
+        controller = GetComponent<CharacterController>();  
     }
 
     // Update is called once per frame
     void Update()
+    {
+        StateMachine();
+        ApplyGravity();
+    }
+
+    void StateMachine()
     {
         switch (playerState)
         {
@@ -41,11 +48,12 @@ public class PlayerController : MonoBehaviour
 
     void Idle()
     {
-        animator.Play("Idle");
 
-        if ((Input.GetAxis("Horizontal") != 0) && (Input.GetAxis("Vertical") != 0))
+        if ((Input.GetAxisRaw("Horizontal") != 0) || (Input.GetAxisRaw("Vertical") != 0))
         {
+            animator.SetBool("Idle", false);
             SetPlayerState(PlayerState.walk);
+            Debug.Log("a");
         }
     }
 
@@ -53,16 +61,34 @@ public class PlayerController : MonoBehaviour
     {
         inputX = Input.GetAxisRaw("Horizontal");
         inputZ = Input.GetAxisRaw("Vertical");
-        rotation = Mathf.Atan2(inputX, inputZ) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
 
-        animator.Play("Walk");
-
-        transform.Translate(Vector3.forward * speed * Time.deltaTime);
-
-        if ((Input.GetAxis("Horizontal") == 0) && (Input.GetAxis("Vertical") == 0))
+        // Si no hay input, cambia a estado de inactividad
+        if (inputX == 0 && inputZ == 0)
         {
             SetPlayerState(PlayerState.idle);
+            animator.SetBool("Idle", true);
+        }
+
+        Vector3 movementInput = new Vector3(inputX, 0, inputZ);
+
+        Quaternion targetRotation = Quaternion.LookRotation(movementInput);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+
+        Vector3 movement = movementInput.normalized * speed * Time.deltaTime;
+        controller.Move(movement);
+    }
+
+    void ApplyGravity()
+    {
+        verticalSpeed += gravity * Time.deltaTime;  // Aumenta la velocidad vertical por la gravedad
+
+        // Si el jugador está en el suelo, evita que siga cayendo
+        if (controller.isGrounded)
+        {
+            if (verticalSpeed < 0)
+            {
+                verticalSpeed = -2f;  // Asegúrate de que no suba por error
+            }
         }
     }
 }
