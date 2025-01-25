@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class Texto_Faciles : MonoBehaviour
 {
 
-    private Sphere SphereScript;
+    //private Sphere SphereScript;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

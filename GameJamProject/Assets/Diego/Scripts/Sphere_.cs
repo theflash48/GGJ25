@@ -1,10 +1,15 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.PostProcessing;
+using Unity.VisualScripting;
 
-public class Sphere : MonoBehaviour
+public class Sphere_ : MonoBehaviour
 {
     public Transform circleCenter;
-    public float radius = 30f; 
+    public GameObject sphere;
+
+    private float radius = 3f; 
     public Renderer planeRenderer; 
     public Color circleColor = Color.red; 
     public Color outsideColor = Color.green;
@@ -17,27 +22,36 @@ public class Sphere : MonoBehaviour
     public Text TextoBoton1, TextoBoton2, TextoBoton3;
     private int ValorAleatorio;
     private int ContadorPreguntas;
-    public bool Estoy1, Estoy2, Estoy3;
+    private bool Estoy1, Estoy2, Estoy3;
 
-    private Texture2D texture;
+
+    public PostProcessVolume postProcessVolume;
+    private Vignette vignette;
+
+
+    private Texture2D texture; // Textura generada dinámicamente
+    private int textureResolution = 256; // Resolución de la textura
+
+
 
     void Start()
     {
-        texture = new Texture2D(256, 256);
+
+        sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+
+
+        texture = new Texture2D(textureResolution, textureResolution);
+        texture.filterMode = FilterMode.Bilinear; // Suavizado en la textura
         planeRenderer.material.mainTexture = texture;
         UpdateTexture();
         //ActivarCanvas.SetActive(false);
 
         int[] valores = { 1, 2, 3 };
 
-        // Genera un índice aleatorio entre 0 y la longitud del array
         int indiceAleatorio = Random.Range(0, valores.Length);
 
-        // Obtén el valor correspondiente al índice
         ValorAleatorio = valores[indiceAleatorio];
-
-        // Muestra el valor en la consola
-        Debug.Log("El valor aleatorio seleccionado es: " + ValorAleatorio);
+       
 
         ContadorPreguntas = 0;
 
@@ -45,7 +59,13 @@ public class Sphere : MonoBehaviour
         if (ValorAleatorio == 2) { Preguta2(); }
         if (ValorAleatorio == 3) { Preguta3(); }
 
+        if (postProcessVolume == null)
+        {
+            postProcessVolume = GetComponent<PostProcessVolume>();
 
+        }
+        postProcessVolume.profile.TryGetSettings(out Vignette vignette);
+        vignette.intensity.value = 0.0f;
 
 
     }
@@ -68,6 +88,9 @@ public class Sphere : MonoBehaviour
             if (ValorAleatorio == 2) { Preguta2(); }
             if (ValorAleatorio == 3) { Preguta3(); }
 
+            postProcessVolume.profile.TryGetSettings(out Vignette vignette);
+            vignette.intensity.value = 0.7f;
+
         }
     }
     private void OnTriggerExit(Collider other)
@@ -75,6 +98,9 @@ public class Sphere : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             ActivarCanvas.SetActive(false);
+
+            postProcessVolume.profile.TryGetSettings(out Vignette vignette);
+            vignette.intensity.value = 0.0f;
 
         }
 
@@ -247,37 +273,34 @@ public class Sphere : MonoBehaviour
     {
 
         Vector2 centerUV = WorldToUV(circleCenter.position, planeRenderer);
+        sphere.transform.position = circleCenter.transform.position;
+        sphere.transform.localScale = new Vector3(radius+0.1f, radius+0.1f, radius + 0.1f );
 
-        
+
+       
         for (int x = 0; x < texture.width; x++)
         {
             for (int y = 0; y < texture.height; y++)
             {
-                
                 Vector2 pixelUV = new Vector2((float)x / texture.width, (float)y / texture.height);
 
-               
+                float uvRadius = radius / Mathf.Max(planeRenderer.bounds.size.x, planeRenderer.bounds.size.z);
+
                 float distance = Vector2.Distance(centerUV, pixelUV);
 
-                if (distance <= radius / 10f) //tamaño del plano
-                {
-                    texture.SetPixel(x, y, circleColor);
-                }
-                else
-                {
-                    texture.SetPixel(x, y, outsideColor);
-                }
-               
+                float t = Mathf.Clamp01((uvRadius - distance) / uvRadius); 
+                Color pixelColor = Color.Lerp(outsideColor, circleColor, t);
+
+                texture.SetPixel(x, y, pixelColor);
             }
         }
-
         texture.Apply();
     }
 
     Vector2 WorldToUV(Vector3 worldPosition, Renderer renderer)
     {
         Vector3 localPos = renderer.transform.InverseTransformPoint(worldPosition);
-        
+
         Vector2 uv = new Vector2(
             (localPos.x / renderer.bounds.size.x) + 0.5f,
             (localPos.z / renderer.bounds.size.z) + 0.5f
