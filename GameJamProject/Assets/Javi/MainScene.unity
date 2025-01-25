@@ -153,7 +153,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -310.66223, y: -118}
+  m_AnchoredPosition: {x: -1529, y: -205}
   m_SizeDelta: {x: 578.67554, y: 153.63312}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &79955448
@@ -956,7 +956,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &660860407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2974,8 +2974,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -434, y: -191}
-  m_SizeDelta: {x: 249.8355, y: 50.1124}
+  m_AnchoredPosition: {x: -569, y: -300}
+  m_SizeDelta: {x: 397.9711, y: 94.7344}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1457434136
 MonoBehaviour:
@@ -3021,9 +3021,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1745827075}
+      - m_Target: {fileID: 1745827077}
         m_TargetAssemblyTypeName: GameController, Assembly-CSharp
-        m_MethodName: Quit
+        m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3245,8 +3245,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -434, y: -103}
-  m_SizeDelta: {x: 249.8355, y: 50.1124}
+  m_AnchoredPosition: {x: -569, y: -133.64145}
+  m_SizeDelta: {x: 397.9711, y: 94.7344}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1467581590
 MonoBehaviour:
@@ -3292,7 +3292,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1745827075}
+      - m_Target: {fileID: 1745827077}
         m_TargetAssemblyTypeName: GameController, Assembly-CSharp
         m_MethodName: Play
         m_Mode: 1
@@ -4109,6 +4109,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1745827076}
   - component: {fileID: 1745827075}
+  - component: {fileID: 1745827077}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -4128,7 +4129,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fa163fb32fe81c40961581e63ed18f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panelMenu: {fileID: 0}
 --- !u!4 &1745827076
 Transform:
   m_ObjectHideFlags: 0
@@ -4144,6 +4144,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1745827077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1745827074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88877659375f9af4c879059fb5be34fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  State: 0
+  panelMenu: {fileID: 1867374544}
 --- !u!1 &1816342104
 GameObject:
   m_ObjectHideFlags: 0
