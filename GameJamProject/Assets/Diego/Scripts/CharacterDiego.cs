@@ -37,9 +37,9 @@ public class CharacterDiego : MonoBehaviour
     void Update()
     {
         // Parametro aterrizaje
-        mIsJumping = mCharacterAnimator.GetBool("IsJumping");
+        //mIsJumping = mCharacterAnimator.GetBool("IsJumping");
         // Parametro caida
-        mIsFalling = mCharacterAnimator.GetBool("IsFalling");
+        //mIsFalling = mCharacterAnimator.GetBool("IsFalling");
         if (!mIsActivating && !mIsDead)
         {
 
@@ -81,8 +81,8 @@ public class CharacterDiego : MonoBehaviour
             if (mMovementVector != Vector2.zero)
             {
 
-                mCharacterAnimator.SetBool("IsMoving", true);
-                if (mIsGrounded && !mIsFalling && !isDragging && !mIsAgacharse && !isPickingUp) mCharacterAnimator.Play("Walk");
+                //mCharacterAnimator.SetBool("IsMoving", true);
+               // if (mIsGrounded && !mIsFalling && !isDragging && !mIsAgacharse && !isPickingUp) mCharacterAnimator.Play("Walk");
                 // Se controla si puede rotar el personaje por si esta haciendo un pull push donde no puede rotar
                 if (canRotate)
                 {
@@ -96,7 +96,7 @@ public class CharacterDiego : MonoBehaviour
             }
             else
             {
-                mCharacterAnimator.SetBool("IsMoving", false);
+                //mCharacterAnimator.SetBool("IsMoving", false);
             }
 
 
