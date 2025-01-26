@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
         }
         else // Burbuja incorrecta
         {
-            EndLevel(false); // Pierdes si seleccionas una burbuja incorrecta
+            EndLevel(true); // Pierdes si seleccionas una burbuja incorrecta
         }
     }
 
@@ -72,6 +72,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            
             Debug.Log("¡Has perdido!");
             // Aquí podrías reiniciar el nivel
         }

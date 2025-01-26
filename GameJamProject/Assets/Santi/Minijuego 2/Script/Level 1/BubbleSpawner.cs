@@ -32,7 +32,7 @@ public class BubbleSpawner : MonoBehaviour
             yield return new WaitForSeconds(interval);
 
             int randomType = Random.Range(0, validBubbleCount); // Genera solo burbujas válidas
-            Vector2 spawnPosition = new Vector2(Random.Range(spawnPoint.position.x-20f, spawnPoint.position.x+20f), spawnPoint.position.y);
+            Vector2 spawnPosition = new Vector2(Random.Range(spawnPoint.position.x-10f, spawnPoint.position.x+10f), spawnPoint.position.y);
             Instantiate(bubblePrefabs[randomType], spawnPosition, Quaternion.identity);
         }
     }

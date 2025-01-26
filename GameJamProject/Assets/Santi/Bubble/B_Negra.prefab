@@ -123,8 +123,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bubbleType: 3
-  characterController: {fileID: 0}
-  speed: 0
+  characterController: {fileID: -5452921664746792043}
+  speed: 10
 --- !u!143 &-5452921664746792043
 CharacterController:
   m_ObjectHideFlags: 0

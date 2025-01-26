@@ -16,8 +16,8 @@ public class Bubble : MonoBehaviour
         {
             Debug.LogWarning("Estoy");
             GameManager.Instance.EndLevel(true); // Pierdes el nivel
-            
             Destroy(gameObject); // Destruye la burbuja
+            Debug.Log("Cambiando de escena");
         }
     }
     void Start()
