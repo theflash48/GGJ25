@@ -3548,6 +3548,72 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8640d8abd53541e45945b5c416d64d01, type: 3}
   m_PrefabInstance: {fileID: 231810829}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &238887466
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 238887468}
+  - component: {fileID: 238887467}
+  m_Layer: 0
+  m_Name: "Ilustracio\u0301n_sin_ti\u0301tulo 1"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!328 &238887467
+VideoPlayer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 238887466}
+  m_Enabled: 1
+  m_VideoClip: {fileID: 32900000, guid: e44b6066f5aeed54da16a6e83cc099da, type: 3}
+  m_TargetCameraAlpha: 1
+  m_TargetCamera3DLayout: 0
+  m_TargetCamera: {fileID: 0}
+  m_TargetTexture: {fileID: 0}
+  m_TimeReference: 0
+  m_TargetMaterialRenderer: {fileID: 0}
+  m_TargetMaterialProperty: <noninit>
+  m_RenderMode: 0
+  m_AspectRatio: 2
+  m_DataSource: 0
+  m_TimeUpdateMode: 2
+  m_PlaybackSpeed: 1
+  m_AudioOutputMode: 2
+  m_TargetAudioSources: []
+  m_DirectAudioVolumes: []
+  m_Url: 
+  m_EnabledAudioTracks: 
+  m_DirectAudioMutes: 
+  m_ControlledAudioTrackCount: 0
+  m_PlayOnAwake: 0
+  m_SkipOnDrop: 1
+  m_Looping: 0
+  m_WaitForFirstFrame: 1
+  m_FrameReadyEventEnabled: 0
+  m_VideoShaders: []
+--- !u!4 &238887468
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 238887466}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 660860410}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &240140864
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7164,6 +7230,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CanvasBueno: {fileID: 631956549}
   CanvasMalo: {fileID: 1913234163}
+  vP: {fileID: 238887467}
+  clips:
+  - {fileID: 32900000, guid: e44b6066f5aeed54da16a6e83cc099da, type: 3}
+  - {fileID: 32900000, guid: ec590b58ddf396c4eabd6f16b9df0e5b, type: 3}
 --- !u!65 &438741285
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11181,6 +11251,7 @@ RectTransform:
   m_Children:
   - {fileID: 1867374545}
   - {fileID: 1715181412}
+  - {fileID: 238887468}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}

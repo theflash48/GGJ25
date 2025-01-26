@@ -1,10 +1,15 @@
 using UnityEngine;
+using UnityEngine.Video;
 
 public class TriggerFinal : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private RayCast1 RayCS;
     public GameObject CanvasBueno, CanvasMalo;
+
+    public VideoPlayer vP;
+    
+    public VideoClip[] clips;
     void Start()
     {
         RayCS= FindAnyObjectByType<RayCast1>();
@@ -19,12 +24,14 @@ public class TriggerFinal : MonoBehaviour
     {
         if (RayCS.FinalBueno == true&& other.gameObject.tag == "Player") 
         {
-            CanvasBueno.SetActive(true);
+            vP.clip = clips[0];
+            vP.Play();
             Debug.Log("Bueno");
         }
         if (RayCS.FinalMalo == true && other.gameObject.tag == "Player")
         {
-            CanvasMalo.SetActive(true);
+            vP.clip = clips[1];
+            vP.Play();
             Debug.Log("Malo");
 
         }
