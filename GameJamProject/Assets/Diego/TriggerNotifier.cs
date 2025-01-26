@@ -11,7 +11,7 @@ public class TriggerNotifier : MonoBehaviour
         // Verificar si el objeto que entra al trigger tiene el tag "Player"
         if (other.CompareTag("Player"))
         {
-            Debug.Log("El jugador ha activado el trigger externo.");
+            //Debug.Log("El jugador ha activado el trigger externo.");
 
             // Notificar a los suscriptores que se activó el trigger
             OnPlayerEnterTrigger?.Invoke();
