@@ -119,37 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &29964634
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 29964635}
-  m_Layer: 0
-  m_Name: Fondo
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &29964635
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 29964634}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1642528732}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &61038998
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,8 +299,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 127302397}
-  - component: {fileID: 127302396}
-  - component: {fileID: 127302395}
+  - component: {fileID: 127302398}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -339,38 +307,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &127302395
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 127302394}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0742c2882065dbd42951f556a0a06edf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentLevel: 1
-  validBubbleCount: 1
-  spawnInterval: 5
-  levelTime: 30
-  timerText: {fileID: 1765316176}
-  levelText: {fileID: 392968076}
-  bubbleSpawner: {fileID: 1743919773}
---- !u!114 &127302396
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 127302394}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ffe197f4b28a6ac45850c54d65fe45a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  levelTime: 30
 --- !u!4 &127302397
 Transform:
   m_ObjectHideFlags: 0
@@ -386,6 +322,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &127302398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 127302394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 716e47757ffa3d74a8d7910e7845d285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentLevel: 1
+  validBubbleCount: 1
+  spawnInterval: 3
+  levelTime: 20
+  timerText: {fileID: 1765316176}
+  levelText: {fileID: 392968076}
+  bubbleSpawner: {fileID: 1743919773}
 --- !u!1 &364640042
 GameObject:
   m_ObjectHideFlags: 0
@@ -398,9 +353,9 @@ GameObject:
   - component: {fileID: 364640045}
   - component: {fileID: 364640044}
   - component: {fileID: 364640043}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: SueloMinijuego
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -698,7 +653,7 @@ Transform:
   m_GameObject: {fileID: 1234461953}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1087, y: -1153.8, z: 0}
+  m_LocalPosition: {x: -1087, y: -1158.4, z: 0}
   m_LocalScale: {x: 52.09, y: 1, z: 15}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -778,37 +733,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1234461953}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1444869255
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1444869256}
-  m_Layer: 0
-  m_Name: Objetos
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1444869256
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1444869255}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1642528732}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1642528731
 GameObject:
   m_ObjectHideFlags: 0
@@ -837,9 +761,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 29964635}
-  - {fileID: 1444869256}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1659078962
@@ -851,7 +773,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1659078963}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -925,7 +847,7 @@ MonoBehaviour:
   - {fileID: 1864972773022270491, guid: 8c3ad619cf6682540a502aa2b9a47da2, type: 3}
   - {fileID: 6728420831631126691, guid: 279f9513b5fa8cb4ebdd15b5bee5a99d, type: 3}
   - {fileID: 7972276146482585709, guid: f348c3044235b1143b0210c32775910f, type: 3}
-  spawnPoint: {fileID: 364640046}
+  spawnPoint: {fileID: 1234461954}
 --- !u!1 &1765316173
 GameObject:
   m_ObjectHideFlags: 0

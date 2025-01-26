@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.PostProcessing;
 using Unity.VisualScripting;
+using System.Collections;
 
 public class RayCast1 : MonoBehaviour
 {
@@ -14,15 +15,21 @@ public class RayCast1 : MonoBehaviour
     public GameObject Trigger1,Trigger2,Trigger3, Trigger4, Trigger5;
     private bool Terminado1, Terminado2, Terminado3, Terminado4,Terminado5, Persona1,Persona2;
     private int ContadorPreguntas, ContadorPreguntas1;
-    public int Contador1, Contador2, Contador3, Contador4, Contador5;
+    public int Contador1, Contador2, Contador3, Contador4, Contador5,ContadorCinematica;
     private CameraFolllow FollowCamera;
     public GameObject Barrera, Barrera1, Barrera2, Barrera3, Barrera4;
+    private float speed = 0.1f;
+    public bool FinalBueno, FinalMalo;
 
     public Animator animatorIra;
     public Animator animatorSoledad;
     public Animator animatorAnsiedad;
     public Animator animatorToc;
     public Animator animatorAprensivo;
+
+    public int contadorParaFinal = 0;
+
+    public Texture2D baseTexture;
 
 
 
@@ -45,7 +52,7 @@ public class RayCast1 : MonoBehaviour
 
     void Start()
     {
-
+        FinalBueno=true;   FinalMalo = false;
 
 
         // Crear una nueva textura para el plano
@@ -125,10 +132,11 @@ public class RayCast1 : MonoBehaviour
         if (!Terminado1)
         {
             ActivarCanvas.SetActive(true);
+            PlayerC.DentroCirculo = true;
             EstoyPregunta1 = true;
             postProcessVolume.profile.TryGetSettings(out Vignette vignette);
             vignette.intensity.value = 0.7f;
-            PlayerC.DentroCirculo = true;
+            
 
             FollowCamera.PlayerIn = false;
         }
@@ -138,11 +146,21 @@ public class RayCast1 : MonoBehaviour
 
      
     }
+    /*public IEnumerator ShowText()
+    {
+        for (int i = 0; i < fullText.Length; i++)
+        {
+            currentText = fullText.Substring(0, i + 1);
+            this.GetComponent<Text>().text = TextoPreguntas;
+            yield return new WaitForSeconds(speed);
+        }
+    }*/
     public void CargaTextosDialogo1()
     {
         if (EstoyPregunta1) {
             if (Contador1 == 0)
             {
+                //StartCoroutine(ShowText());
                 TextoPreguntas.text = "¡Todo me saca de quicio! Siempre hay algo que arruina mi día.";
                 TextoBoton1.text = "Entiendo que estés molesto. Esa energía puede usarse de otra manera.";
                 TextoBoton2.text = "Tal vez no deberías darle tanta importancia a esas cosas.";
@@ -174,9 +192,9 @@ public class RayCast1 : MonoBehaviour
             }
 
             if (objectBrushRadii[0] == 20.0f) {  EstoyPregunta1 = false; ActivarCanvas.SetActive(false); postProcessVolume.profile.TryGetSettings(out Vignette vignette);
-                vignette.intensity.value = 0.0f; FollowCamera.PlayerIn = true; Destroy(Barrera); PlayerC.DentroCirculo = false;
+                vignette.intensity.value = 0.0f; FollowCamera.PlayerIn = true;  PlayerC.DentroCirculo = false; ContadorCinematica++; contadorParaFinal++;
             }
-            if (objectBrushRadii[0] < 20.0f && Contador1 == 4) { objectBrushRadii[0] = 0.0f; EstoyPregunta1 = false; Destroy(Trigger1); Destroy(Barrera); PlayerC.DentroCirculo = false; }
+            if (objectBrushRadii[0] < 20.0f && Contador1 == 4) { objectBrushRadii[0] = 0.0f; EstoyPregunta1 = false; Destroy(Trigger1);  PlayerC.DentroCirculo = false; contadorParaFinal++; }
         }
         if (EstoyPregunta2) {
             if (Contador2 == 0)
@@ -212,9 +230,9 @@ public class RayCast1 : MonoBehaviour
             }
 
             if (objectBrushRadii[1] == 20.0f) {  EstoyPregunta2 = false; ActivarCanvas.SetActive(false); postProcessVolume.profile.TryGetSettings(out Vignette vignette);
-                vignette.intensity.value = 0.0f; FollowCamera.PlayerIn1 = true; Destroy(Barrera1); PlayerC.DentroCirculo = false;
+                vignette.intensity.value = 0.0f; FollowCamera.PlayerIn1 = true;  PlayerC.DentroCirculo = false; ContadorCinematica++; contadorParaFinal++;
             }
-            if (objectBrushRadii[1] < 20.0f && Contador2 == 4) { objectBrushRadii[1] = 0.0f; EstoyPregunta2 = false; Destroy(Trigger2); Destroy(Barrera1); PlayerC.DentroCirculo = false; }
+            if (objectBrushRadii[1] < 20.0f && Contador2 == 4) { objectBrushRadii[1] = 0.0f; EstoyPregunta2 = false; Destroy(Trigger2);  PlayerC.DentroCirculo = false; contadorParaFinal++; }
         }
 
         ///////////////////////
@@ -255,9 +273,9 @@ public class RayCast1 : MonoBehaviour
             }
 
             if (objectBrushRadii[2] == 20.0f) {  EstoyPregunta3 = false; ActivarCanvas.SetActive(false); postProcessVolume.profile.TryGetSettings(out Vignette vignette);
-                vignette.intensity.value = 0.0f; FollowCamera.PlayerIn2 = true; Destroy(Barrera2); PlayerC.DentroCirculo = false;
+                vignette.intensity.value = 0.0f; FollowCamera.PlayerIn2 = true;  PlayerC.DentroCirculo = false; ContadorCinematica++; contadorParaFinal++;
             }
-            if (objectBrushRadii[2] < 20.0f && Contador3 == 4) { objectBrushRadii[2] = 0.0f; EstoyPregunta3 = false; Destroy(Trigger3); Destroy(Barrera2); PlayerC.DentroCirculo = false; }
+            if (objectBrushRadii[2] < 20.0f && Contador3 == 4) { objectBrushRadii[2] = 0.0f; EstoyPregunta3 = false; Destroy(Trigger3);  PlayerC.DentroCirculo = false; contadorParaFinal++; }
         }
         if (EstoyPregunta4)
         {
@@ -296,9 +314,9 @@ public class RayCast1 : MonoBehaviour
             }
 
             if (objectBrushRadii[3] == 20.0f) {  EstoyPregunta4 = false; ActivarCanvas.SetActive(false); postProcessVolume.profile.TryGetSettings(out Vignette vignette);
-                vignette.intensity.value = 0.0f; FollowCamera.PlayerIn3 = true; Destroy(Barrera3); PlayerC.DentroCirculo = false;
+                vignette.intensity.value = 0.0f; FollowCamera.PlayerIn3 = true; PlayerC.DentroCirculo = false; ContadorCinematica++; contadorParaFinal++;
             }
-            if (objectBrushRadii[3] < 20.0f && Contador4 == 4) { objectBrushRadii[3] = 0.0f; EstoyPregunta4 = false; Destroy(Trigger4); Destroy(Barrera3); PlayerC.DentroCirculo = false; }
+            if (objectBrushRadii[3] < 20.0f && Contador4 == 4) { objectBrushRadii[3] = 0.0f; EstoyPregunta4 = false; Destroy(Trigger4);  PlayerC.DentroCirculo = false; contadorParaFinal++; }
         }
         if (EstoyPregunta5)
         {
@@ -336,9 +354,9 @@ public class RayCast1 : MonoBehaviour
             }
 
             if (objectBrushRadii[4] == 20.0f) {  EstoyPregunta5 = false; ActivarCanvas.SetActive(false); postProcessVolume.profile.TryGetSettings(out Vignette vignette);
-                vignette.intensity.value = 0.0f; FollowCamera.PlayerIn4 = true; Destroy(Barrera4); PlayerC.DentroCirculo = false;
+                vignette.intensity.value = 0.0f; FollowCamera.PlayerIn4 = true; PlayerC.DentroCirculo = false; ContadorCinematica++; contadorParaFinal++;
             }
-            if (objectBrushRadii[4] < 20.0f && Contador5 == 4) { objectBrushRadii[4] = 0.0f; EstoyPregunta5 = false; Destroy(Trigger5); Destroy(Barrera4); PlayerC.DentroCirculo = false; }
+            if (objectBrushRadii[4] < 20.0f && Contador5 == 4) { objectBrushRadii[4] = 0.0f; EstoyPregunta5 = false; Destroy(Trigger5); PlayerC.DentroCirculo = false; contadorParaFinal++; }
 
         }
 
@@ -599,6 +617,9 @@ public class RayCast1 : MonoBehaviour
     {
         FuntionActive();
         CargaTextosDialogo1();
+        if (ContadorCinematica >= 3) { FinalMalo = true; FinalBueno = false; }
+        if (contadorParaFinal == 5) { Destroy(Barrera4); }
+       
     }
 
     public void FuntionActive()
@@ -618,7 +639,7 @@ public class RayCast1 : MonoBehaviour
                 float brushRadius = objectBrushRadii[i];
 
                 Ray ray = new Ray(obj.transform.position, Vector3.down);
-                //Debug.DrawRay(obj.transform.position, Vector3.down * 10f, Color.green); // Dibuja el raycast
+                Debug.DrawRay(obj.transform.position, Vector3.down * 50f, Color.green); // Dibuja el raycast
 
                 RaycastHit[] hits = Physics.RaycastAll(ray);
                 foreach (var hit in hits)
@@ -648,13 +669,22 @@ public class RayCast1 : MonoBehaviour
 
     void ClearTexture()
     {
-        // Rellenar toda la textura con el color predeterminado
-        Color[] pixels = new Color[textureSize * textureSize];
-        for (int i = 0; i < pixels.Length; i++)
+        if (baseTexture != null)
         {
-            pixels[i] = defaultColor;
+            // Copiar los píxeles de la textura base
+            Color[] basePixels = baseTexture.GetPixels();
+            texture.SetPixels(basePixels);
         }
-        texture.SetPixels(pixels);
+        else
+        {
+            // Si no hay textura base, rellenar con el color predeterminado
+            Color[] pixels = new Color[textureSize * textureSize];
+            for (int i = 0; i < pixels.Length; i++)
+            {
+                pixels[i] = defaultColor;
+            }
+            texture.SetPixels(pixels);
+        }
     }
 
     void PaintOnTexture(Vector2 uv, float brushRadius)
@@ -682,5 +712,7 @@ public class RayCast1 : MonoBehaviour
                 }
             }
         }
-    }
+    } 
+
+
 }
