@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
         movementVector2 = playerInput.actions["Move"].ReadValue<Vector2>();
         
 
-        Debug.Log("X: " + movementVector2.x + " - Y: " + movementVector2.y);
+        
         if (!DentroCirculo) 
         {
             if (movementVector2 != Vector2.zero)

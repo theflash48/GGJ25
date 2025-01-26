@@ -24,6 +24,7 @@ public class Sphere_1 : MonoBehaviour
     private int ValorAleatorio;
     private int ContadorPreguntas;
     private bool Estoy1, Estoy2, Estoy3,Terminado;
+    
 
 
     public PostProcessVolume postProcessVolume;
