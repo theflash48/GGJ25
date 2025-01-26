@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BubbleSpawner : MonoBehaviour
@@ -9,7 +10,7 @@ public class BubbleSpawner : MonoBehaviour
     
     private void Start()
     {
-            Debug.LogError("No se ha asignado una zona de generación.");
+            
     }
         public void StartSpawning(float interval, int validBubbleCount)
     {
@@ -31,8 +32,9 @@ public class BubbleSpawner : MonoBehaviour
             yield return new WaitForSeconds(interval);
 
             int randomType = Random.Range(0, validBubbleCount); // Genera solo burbujas válidas
-            Vector2 spawnPosition = new Vector2(Random.Range(spawnPoint.position.x-50f, spawnPoint.position.x+50f), spawnPoint.position.y);
-            Instantiate(bubblePrefabs[randomType], spawnPoint.position, Quaternion.identity);
+            Vector2 spawnPosition = new Vector2(Random.Range(spawnPoint.position.x-20f, spawnPoint.position.x+20f), spawnPoint.position.y);
+            Instantiate(bubblePrefabs[randomType], spawnPosition, Quaternion.identity);
         }
     }
+    
 }
