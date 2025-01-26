@@ -168,10 +168,10 @@ public class RayCast1 : MonoBehaviour
                 vignette.intensity.value = 0.0f; FollowCamera.PlayerIn = true;
             }
 
-            if (objectBrushRadii[0] == 20.0f) { Debug.Log("FALLASTE"); EstoyPregunta1 = false; ActivarCanvas.SetActive(false); postProcessVolume.profile.TryGetSettings(out Vignette vignette);
+            if (objectBrushRadii[0] == 20.0f) {  EstoyPregunta1 = false; ActivarCanvas.SetActive(false); postProcessVolume.profile.TryGetSettings(out Vignette vignette);
                 vignette.intensity.value = 0.0f; FollowCamera.PlayerIn = true;
             }
-            if (objectBrushRadii[0] < 20.0f && Contador1 == 4) { objectBrushRadii[0] = 0.0f; EstoyPregunta1 = false; Debug.Log("SUUUUUUUUUUUU"); }
+            if (objectBrushRadii[0] < 20.0f && Contador1 == 4) { objectBrushRadii[0] = 0.0f; EstoyPregunta1 = false; Destroy(Trigger1); }
         }
         if (EstoyPregunta2) {
             if (Contador2 == 0)
@@ -206,10 +206,10 @@ public class RayCast1 : MonoBehaviour
                 vignette.intensity.value = 0.0f;
             }
 
-            if (objectBrushRadii[1] == 20.0f) { Debug.Log("FALLASTE"); EstoyPregunta2 = false; ActivarCanvas.SetActive(false); postProcessVolume.profile.TryGetSettings(out Vignette vignette);
+            if (objectBrushRadii[1] == 20.0f) {  EstoyPregunta2 = false; ActivarCanvas.SetActive(false); postProcessVolume.profile.TryGetSettings(out Vignette vignette);
                 vignette.intensity.value = 0.0f; FollowCamera.PlayerIn1 = true;
             }
-            if (objectBrushRadii[1] < 20.0f && Contador2 == 4) { objectBrushRadii[1] = 0.0f; EstoyPregunta2 = false; Debug.Log("SUUUUUUUUUUUU"); }
+            if (objectBrushRadii[1] < 20.0f && Contador2 == 4) { objectBrushRadii[1] = 0.0f; EstoyPregunta2 = false; Destroy(Trigger2); }
         }
 
         ///////////////////////
@@ -249,10 +249,10 @@ public class RayCast1 : MonoBehaviour
                 vignette.intensity.value = 0.0f;
             }
 
-            if (objectBrushRadii[2] == 20.0f) { Debug.Log("FALLASTE"); EstoyPregunta3 = false; ActivarCanvas.SetActive(false); postProcessVolume.profile.TryGetSettings(out Vignette vignette);
+            if (objectBrushRadii[2] == 20.0f) {  EstoyPregunta3 = false; ActivarCanvas.SetActive(false); postProcessVolume.profile.TryGetSettings(out Vignette vignette);
                 vignette.intensity.value = 0.0f; FollowCamera.PlayerIn2 = true;
             }
-            if (objectBrushRadii[2] < 20.0f && Contador3 == 4) { objectBrushRadii[2] = 0.0f; EstoyPregunta3 = false; Debug.Log("SUUUUUUUUUUUU"); }
+            if (objectBrushRadii[2] < 20.0f && Contador3 == 4) { objectBrushRadii[2] = 0.0f; EstoyPregunta3 = false; Destroy(Trigger3); }
         }
         if (EstoyPregunta4)
         {
@@ -290,10 +290,10 @@ public class RayCast1 : MonoBehaviour
 
             }
 
-            if (objectBrushRadii[3] == 20.0f) { Debug.Log("FALLASTE"); EstoyPregunta4 = false; ActivarCanvas.SetActive(false); postProcessVolume.profile.TryGetSettings(out Vignette vignette);
+            if (objectBrushRadii[3] == 20.0f) {  EstoyPregunta4 = false; ActivarCanvas.SetActive(false); postProcessVolume.profile.TryGetSettings(out Vignette vignette);
                 vignette.intensity.value = 0.0f; FollowCamera.PlayerIn3 = true;
             }
-            if (objectBrushRadii[3] < 20.0f && Contador4 == 4) { objectBrushRadii[3] = 0.0f; EstoyPregunta4 = false; Debug.Log("SUUUUUUUUUUUU"); }
+            if (objectBrushRadii[3] < 20.0f && Contador4 == 4) { objectBrushRadii[3] = 0.0f; EstoyPregunta4 = false; Destroy(Trigger4); }
         }
         if (EstoyPregunta5)
         {
@@ -330,10 +330,10 @@ public class RayCast1 : MonoBehaviour
                 vignette.intensity.value = 0.0f;
             }
 
-            if (objectBrushRadii[4] == 20.0f) { Debug.Log("FALLASTE"); EstoyPregunta5 = false; ActivarCanvas.SetActive(false); postProcessVolume.profile.TryGetSettings(out Vignette vignette);
+            if (objectBrushRadii[4] == 20.0f) {  EstoyPregunta5 = false; ActivarCanvas.SetActive(false); postProcessVolume.profile.TryGetSettings(out Vignette vignette);
                 vignette.intensity.value = 0.0f; FollowCamera.PlayerIn4 = true;
             }
-            if (objectBrushRadii[4] < 20.0f && Contador5 == 4) { objectBrushRadii[4] = 0.0f; EstoyPregunta5 = false; Debug.Log("SUUUUUUUUUUUU"); }
+            if (objectBrushRadii[4] < 20.0f && Contador5 == 4) { objectBrushRadii[4] = 0.0f; EstoyPregunta5 = false; Destroy(Trigger5); }
 
         }
 
@@ -342,8 +342,8 @@ public class RayCast1 : MonoBehaviour
     { 
         if (EstoyPregunta1) 
         {
-            if (Contador1 == 2) { objectBrushRadii[0] += 5.0f; Debug.Log("Mal"); Trigger1.transform.localScale = Trigger1.transform.localScale * 1.5f; }
-            if (Contador1 == 1) { objectBrushRadii[0] += 5.0f; Debug.Log("Mal"); Trigger1.transform.localScale = Trigger1.transform.localScale * 1.5f; }
+            if (Contador1 == 2) { objectBrushRadii[0] += 5.0f;  Trigger1.transform.localScale = Trigger1.transform.localScale * 1.5f; }
+            if (Contador1 == 1) { objectBrushRadii[0] += 5.0f;  Trigger1.transform.localScale = Trigger1.transform.localScale * 1.5f; }
             int randomState = Random.Range(1, 6);
 
             string triggerName = "Talk " + randomState;
@@ -355,8 +355,8 @@ public class RayCast1 : MonoBehaviour
         }
         if (EstoyPregunta2)
         {
-            if (Contador2 == 2) { objectBrushRadii[1] += 5.0f; Debug.Log("Mal"); Trigger2.transform.localScale = Trigger2.transform.localScale * 1.5f; }
-            if (Contador2 == 0) { objectBrushRadii[1] += 5.0f; Debug.Log("Mal"); Trigger2.transform.localScale = Trigger2.transform.localScale * 1.5f; }
+            if (Contador2 == 2) { objectBrushRadii[1] += 5.0f; Trigger2.transform.localScale = Trigger2.transform.localScale * 1.5f; }
+            if (Contador2 == 0) { objectBrushRadii[1] += 5.0f; Trigger2.transform.localScale = Trigger2.transform.localScale * 1.5f; }
             int randomState = Random.Range(1, 5);
 
             string triggerName = "Talk " + randomState;
@@ -367,8 +367,8 @@ public class RayCast1 : MonoBehaviour
         }
         if (EstoyPregunta3)
         {
-            if (Contador3 == 2) { objectBrushRadii[2] += 5.0f; Debug.Log("Mal"); Trigger3.transform.localScale = Trigger3.transform.localScale * 1.5f; }
-            if (Contador3 == 1) { objectBrushRadii[2] += 5.0f; Debug.Log("Mal"); Trigger3.transform.localScale = Trigger3.transform.localScale * 1.5f; }
+            if (Contador3 == 2) { objectBrushRadii[2] += 5.0f;  Trigger3.transform.localScale = Trigger3.transform.localScale * 1.5f; }
+            if (Contador3 == 1) { objectBrushRadii[2] += 5.0f; Trigger3.transform.localScale = Trigger3.transform.localScale * 1.5f; }
             int randomState = Random.Range(1, 6);
 
             string triggerName = "Talk " + randomState;
@@ -379,8 +379,8 @@ public class RayCast1 : MonoBehaviour
         }
         if (EstoyPregunta4)
         {
-            if (Contador4 == 2) { objectBrushRadii[3] += 5.0f; Debug.Log("Mal"); Trigger4.transform.localScale = Trigger4.transform.localScale * 1.5f; }
-            if (Contador4 == 1) { objectBrushRadii[3] += 5.0f; Debug.Log("Mal"); Trigger4.transform.localScale = Trigger4.transform.localScale * 1.5f; }
+            if (Contador4 == 2) { objectBrushRadii[3] += 5.0f;  Trigger4.transform.localScale = Trigger4.transform.localScale * 1.5f; }
+            if (Contador4 == 1) { objectBrushRadii[3] += 5.0f; Trigger4.transform.localScale = Trigger4.transform.localScale * 1.5f; }
             int randomState = Random.Range(1, 5);
 
             string triggerName = "Talk " + randomState;
@@ -393,8 +393,8 @@ public class RayCast1 : MonoBehaviour
         {
             
            
-            if (Contador5 == 2) { objectBrushRadii[4] += 5.0f; Debug.Log("Mal"); Trigger5.transform.localScale = Trigger5.transform.localScale * 1.5f; }
-            if (Contador5 == 0) { objectBrushRadii[4] += 5.0f; Debug.Log("Mal"); Trigger5.transform.localScale = Trigger5.transform.localScale * 1.5f; }
+            if (Contador5 == 2) { objectBrushRadii[4] += 5.0f; Trigger5.transform.localScale = Trigger5.transform.localScale * 1.5f; }
+            if (Contador5 == 0) { objectBrushRadii[4] += 5.0f;  Trigger5.transform.localScale = Trigger5.transform.localScale * 1.5f; }
             Contador5++;
 
         }
@@ -406,8 +406,8 @@ public class RayCast1 : MonoBehaviour
     {
         if (EstoyPregunta1)
         {
-            if (Contador1 == 1) { objectBrushRadii[0] += 5.0f; Debug.Log("Mal"); Trigger1.transform.localScale = Trigger1.transform.localScale * 1.5f; }
-            if (Contador1 == 0) { objectBrushRadii[0] += 5.0f; Debug.Log("Mal"); Trigger1.transform.localScale = Trigger1.transform.localScale * 1.5f; }
+            if (Contador1 == 1) { objectBrushRadii[0] += 5.0f; Trigger1.transform.localScale = Trigger1.transform.localScale * 1.5f; }
+            if (Contador1 == 0) { objectBrushRadii[0] += 5.0f;  Trigger1.transform.localScale = Trigger1.transform.localScale * 1.5f; }
             int randomState = Random.Range(1, 6);
 
             string triggerName = "Talk " + randomState;
@@ -419,8 +419,8 @@ public class RayCast1 : MonoBehaviour
         }
         if (EstoyPregunta2)
         {
-            if (Contador2 == 2) { objectBrushRadii[1] += 5.0f; Debug.Log("Mal"); Trigger2.transform.localScale = Trigger2.transform.localScale * 1.5f; }
-            if (Contador2 == 1) { objectBrushRadii[1] += 5.0f; Debug.Log("Mal"); Trigger2.transform.localScale = Trigger2.transform.localScale * 1.5f; }
+            if (Contador2 == 2) { objectBrushRadii[1] += 5.0f;  Trigger2.transform.localScale = Trigger2.transform.localScale * 1.5f; }
+            if (Contador2 == 1) { objectBrushRadii[1] += 5.0f; Trigger2.transform.localScale = Trigger2.transform.localScale * 1.5f; }
             int randomState = Random.Range(1, 5);
 
             string triggerName = "Talk " + randomState;
@@ -431,8 +431,8 @@ public class RayCast1 : MonoBehaviour
         }
         if (EstoyPregunta3)
         {
-            if (Contador3 == 0) { objectBrushRadii[2] += 5.0f; Debug.Log("Mal"); Trigger3.transform.localScale = Trigger3.transform.localScale * 1.5f; }
-            if (Contador3 == 1) { objectBrushRadii[2] += 5.0f; Debug.Log("Mal"); Trigger3.transform.localScale = Trigger3.transform.localScale * 1.5f; }
+            if (Contador3 == 0) { objectBrushRadii[2] += 5.0f;  Trigger3.transform.localScale = Trigger3.transform.localScale * 1.5f; }
+            if (Contador3 == 1) { objectBrushRadii[2] += 5.0f;  Trigger3.transform.localScale = Trigger3.transform.localScale * 1.5f; }
             int randomState = Random.Range(1, 6);
 
             string triggerName = "Talk " + randomState;
@@ -443,8 +443,8 @@ public class RayCast1 : MonoBehaviour
         }
         if (EstoyPregunta4)
         {
-            if (Contador4 == 2) { objectBrushRadii[3] += 5.0f; Debug.Log("Mal"); Trigger4.transform.localScale = Trigger4.transform.localScale * 1.5f; }
-            if (Contador4 == 0) { objectBrushRadii[3] += 5.0f; Debug.Log("Mal"); Trigger4.transform.localScale = Trigger4.transform.localScale * 1.5f; }
+            if (Contador4 == 2) { objectBrushRadii[3] += 5.0f; Trigger4.transform.localScale = Trigger4.transform.localScale * 1.5f; }
+            if (Contador4 == 0) { objectBrushRadii[3] += 5.0f;  Trigger4.transform.localScale = Trigger4.transform.localScale * 1.5f; }
             int randomState = Random.Range(1, 5);
 
             string triggerName = "Talk " + randomState;
@@ -458,8 +458,8 @@ public class RayCast1 : MonoBehaviour
         if (EstoyPregunta5)
         {
 
-            if (Contador5 == 2) { objectBrushRadii[4] += 5.0f; Debug.Log("Mal"); Trigger5.transform.localScale = Trigger5.transform.localScale * 1.5f; }
-            if (Contador5 == 1) { objectBrushRadii[4] += 5.0f; Debug.Log("Mal"); Trigger5.transform.localScale = Trigger5.transform.localScale * 1.5f; }
+            if (Contador5 == 2) { objectBrushRadii[4] += 5.0f;  Trigger5.transform.localScale = Trigger5.transform.localScale * 1.5f; }
+            if (Contador5 == 1) { objectBrushRadii[4] += 5.0f;  Trigger5.transform.localScale = Trigger5.transform.localScale * 1.5f; }
             Contador5++;
 
         }
@@ -468,8 +468,8 @@ public class RayCast1 : MonoBehaviour
     {
         if (EstoyPregunta1)
         {
-            if (Contador1 == 0) { objectBrushRadii[0] += 5.0f; Debug.Log("Mal"); Trigger1.transform.localScale = Trigger1.transform.localScale * 1.5f; }
-            if (Contador1 == 2) { objectBrushRadii[0] += 5.0f; Debug.Log("Mal"); Trigger1.transform.localScale = Trigger1.transform.localScale * 1.5f; }
+            if (Contador1 == 0) { objectBrushRadii[0] += 5.0f;  Trigger1.transform.localScale = Trigger1.transform.localScale * 1.5f; }
+            if (Contador1 == 2) { objectBrushRadii[0] += 5.0f;  Trigger1.transform.localScale = Trigger1.transform.localScale * 1.5f; }
             int randomState = Random.Range(1, 6); 
 
             string triggerName = "Talk " + randomState;
@@ -481,8 +481,8 @@ public class RayCast1 : MonoBehaviour
         }
         if (EstoyPregunta2)
         {
-            if (Contador2 == 1) { objectBrushRadii[1] += 5.0f; Debug.Log("Mal"); Trigger2.transform.localScale = Trigger2.transform.localScale * 1.5f; }
-            if (Contador2 == 0) { objectBrushRadii[1] += 5.0f; Debug.Log("Mal"); Trigger2.transform.localScale = Trigger2.transform.localScale * 1.5f; }
+            if (Contador2 == 1) { objectBrushRadii[1] += 5.0f; Trigger2.transform.localScale = Trigger2.transform.localScale * 1.5f; }
+            if (Contador2 == 0) { objectBrushRadii[1] += 5.0f; Trigger2.transform.localScale = Trigger2.transform.localScale * 1.5f; }
             int randomState = Random.Range(1, 5);
 
             string triggerName = "Talk " + randomState;
@@ -493,8 +493,8 @@ public class RayCast1 : MonoBehaviour
         }
         if (EstoyPregunta3)
         {
-            if (Contador3 == 2) { objectBrushRadii[2] += 5.0f; Debug.Log("Mal"); Trigger3.transform.localScale = Trigger3.transform.localScale * 1.5f; }
-            if (Contador3 == 0) { objectBrushRadii[2] += 5.0f; Debug.Log("Mal"); Trigger3.transform.localScale = Trigger3.transform.localScale * 1.5f; }
+            if (Contador3 == 2) { objectBrushRadii[2] += 5.0f; Trigger3.transform.localScale = Trigger3.transform.localScale * 1.5f; }
+            if (Contador3 == 0) { objectBrushRadii[2] += 5.0f;  Trigger3.transform.localScale = Trigger3.transform.localScale * 1.5f; }
             int randomState = Random.Range(1, 6);
 
             string triggerName = "Talk " + randomState;
@@ -505,8 +505,8 @@ public class RayCast1 : MonoBehaviour
         }
         if (EstoyPregunta4)
         {
-            if (Contador4 == 1) { objectBrushRadii[3] += 5.0f; Debug.Log("Mal"); Trigger4.transform.localScale = Trigger4.transform.localScale * 1.5f; }
-            if (Contador4 == 0) { objectBrushRadii[3] += 5.0f; Debug.Log("Mal"); Trigger4.transform.localScale = Trigger4.transform.localScale * 1.5f; }
+            if (Contador4 == 1) { objectBrushRadii[3] += 5.0f;  Trigger4.transform.localScale = Trigger4.transform.localScale * 1.5f; }
+            if (Contador4 == 0) { objectBrushRadii[3] += 5.0f;  Trigger4.transform.localScale = Trigger4.transform.localScale * 1.5f; }
             int randomState = Random.Range(1, 5);
 
             string triggerName = "Talk " + randomState;
@@ -519,8 +519,8 @@ public class RayCast1 : MonoBehaviour
         {
            
            
-            if (Contador5 == 0) { objectBrushRadii[4] += 5.0f; Debug.Log("Mal"); Trigger5.transform.localScale = Trigger5.transform.localScale * 1.5f; }
-            if (Contador5 == 1) { objectBrushRadii[4] += 5.0f; Debug.Log("Mal"); Trigger5.transform.localScale = Trigger5.transform.localScale * 1.5f; }
+            if (Contador5 == 0) { objectBrushRadii[4] += 5.0f; Trigger5.transform.localScale = Trigger5.transform.localScale * 1.5f; }
+            if (Contador5 == 1) { objectBrushRadii[4] += 5.0f;  Trigger5.transform.localScale = Trigger5.transform.localScale * 1.5f; }
             Contador5++;
 
         }
@@ -610,18 +610,18 @@ public class RayCast1 : MonoBehaviour
                 float brushRadius = objectBrushRadii[i];
 
                 Ray ray = new Ray(obj.transform.position, Vector3.down);
-                Debug.DrawRay(obj.transform.position, Vector3.down * 10f, Color.green); // Dibuja el raycast
+                //Debug.DrawRay(obj.transform.position, Vector3.down * 10f, Color.green); // Dibuja el raycast
 
                 RaycastHit[] hits = Physics.RaycastAll(ray);
                 foreach (var hit in hits)
                 {
                     if (hit.collider.CompareTag("Player"))
                     {
-                        Debug.Log($"El jugador ha pasado por el raycast del objeto: {obj.name}");
+                        //Debug.Log($"El jugador ha pasado por el raycast del objeto: {obj.name}");
 
                         // Incrementar el radio del pincel para este raycast
                         //objectBrushRadii[i] += 0.01f; // Incremento, ajusta este valor según sea necesario
-                        Debug.Log($"Nuevo radio del pincel para {obj.name}: {objectBrushRadii[i]}");
+                        //Debug.Log($"Nuevo radio del pincel para {obj.name}: {objectBrushRadii[i]}");
                     }
 
                     if (hit.collider.gameObject == gameObject) // Asegurar que impacta el plano
