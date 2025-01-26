@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour
         if (movementVector2 != Vector2.zero)
         {
             animator.SetBool("Running", true);
-            targetRotation = Mathf.Atan2(movementVector2.x, movementVector2.y) * Mathf.Rad2Deg;
+            targetRotation = Mathf.Atan2(movementVector2.x, movementVector2.y) * Mathf.Rad2Deg - 90;
         }
         else
         {
@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour
         float rotation = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetRotation, ref rotationSpeed, rotationSmoothTime);
 
         transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
-        Vector3 movement = new Vector3(movementVector2.x, -2, movementVector2.y).normalized;
+        Vector3 movement = new Vector3(-movementVector2.y, -2, movementVector2.x).normalized;
 
         controller.Move(speed * Time.deltaTime * movement);
     }

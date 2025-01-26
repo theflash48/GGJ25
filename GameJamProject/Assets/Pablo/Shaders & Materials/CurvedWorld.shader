@@ -46,8 +46,8 @@ Shader "Custom/CurvedWorld"
 
             distance.xyz -= _WorldSpaceCameraPos;
 
-            distance = float4(0.0f, (distance.z * distance.z * -0.1 * _CurveIntensity) ,0.0f, 0.0f); // Uncomment for curve on Z
-            //distance = float4(0.0f, (distance.x * distance.x * -0.1 * _CurveIntensity) ,0.0f, 0.0f); // Uncomment for curve on X
+            //distance = float4(0.0f, (distance.z * distance.z * -0.1 * _CurveIntensity) ,0.0f, 0.0f); // Uncomment for curve on Z
+            distance = float4(0.0f, (distance.x * distance.x * -0.1 * _CurveIntensity) ,0.0f, 0.0f); // Uncomment for curve on X
             //distance = float4(0.0f, ((distance.x * distance.x + distance.z * distance.z) * -0.1 * _CurveIntensity) ,0.0f, 0.0f); // Uncomment for curve on X & Z
 
             v.vertex += mul(unity_WorldToObject, distance);
