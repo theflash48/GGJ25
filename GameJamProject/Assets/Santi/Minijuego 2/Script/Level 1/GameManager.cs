@@ -7,8 +7,8 @@ public class GameManager : MonoBehaviour
 
     public int currentLevel = 1; // Nivel actual (Nivel 1)
     public int validBubbleCount = 1; // Solo 1 tipo de burbuja válida
-    public float spawnInterval = 5f; // Intervalo de generación de burbujas
-    public float levelTime = 30f; // Duración del nivel
+    public float spawnInterval = 3f; // Intervalo de generación de burbujas
+    public float levelTime = 20f; // Duración del nivel
     private float timer;
 
     public Text timerText; // Texto del temporizador
