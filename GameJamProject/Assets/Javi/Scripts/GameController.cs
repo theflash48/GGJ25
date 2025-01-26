@@ -1,16 +1,18 @@
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Video;
 
 public class GameController : MonoBehaviour
 {
     public enum GameState{Menu, Intro, Gameplay, Bubble, Minigame, Cinematic}
     public GameState State;
 
+    public VideoPlayer vP;
+    
     public GameObject panelMenu;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -43,6 +45,8 @@ public class GameController : MonoBehaviour
 
     private void Intro()
     {
+        vP.Play();
+        Invoke("Wait", 21f);
         panelMenu.SetActive(false);
     }
 
@@ -64,6 +68,13 @@ public class GameController : MonoBehaviour
     private void SetState(GameState newState)
     {
         State = newState;
+    }
+
+    //Para cambiar de la cinematica al gameplay
+    private void Wait()
+    {
+        SetState(GameState.Gameplay);
+        vP.Stop();
     }
     
     //Buttons
