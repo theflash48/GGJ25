@@ -27,6 +27,8 @@ public class RayCast1 : MonoBehaviour
     public Animator animatorToc;
     public Animator animatorAprensivo;
 
+    public Animator PlayerA;
+
     public int contadorParaFinal = 0;
 
     public Texture2D baseTexture;
@@ -136,7 +138,8 @@ public class RayCast1 : MonoBehaviour
             EstoyPregunta1 = true;
             postProcessVolume.profile.TryGetSettings(out Vignette vignette);
             vignette.intensity.value = 0.7f;
-            
+
+            //PlayerA.Play("ANI_Robot_01_Idle");
 
             FollowCamera.PlayerIn = false;
         }
@@ -165,6 +168,8 @@ public class RayCast1 : MonoBehaviour
                 TextoBoton1.text = "Entiendo que estés molesto. Esa energía puede usarse de otra manera.";
                 TextoBoton2.text = "Tal vez no deberías darle tanta importancia a esas cosas.";
                 TextoBoton3.text = "Si te enfadas por todo, nunca vas a estar tranquilo.";
+
+
             }
             if (Contador1 == 1)
             {
@@ -372,6 +377,13 @@ public class RayCast1 : MonoBehaviour
             string triggerName = "Talk " + randomState;
 
             animatorIra.SetTrigger(triggerName);
+
+            int randomStateS = Random.Range(1, 4);
+
+            string triggerNameS = "Talk " + randomState;
+
+            PlayerA.SetTrigger(triggerName);
+            PlayerA.Play("ANI_Robot_02_Talk1_1");
             Contador1++;
 
 
@@ -418,6 +430,11 @@ public class RayCast1 : MonoBehaviour
            
             if (Contador5 == 2) { objectBrushRadii[4] += 5.0f; Trigger5.transform.localScale = Trigger5.transform.localScale * 1.5f; }
             if (Contador5 == 0) { objectBrushRadii[4] += 5.0f;  Trigger5.transform.localScale = Trigger5.transform.localScale * 1.5f; }
+            int randomState = Random.Range(1, 6);
+
+            string triggerName = "Talk " + randomState;
+
+            animatorAprensivo.SetTrigger(triggerName);
             Contador5++;
 
         }
@@ -483,6 +500,11 @@ public class RayCast1 : MonoBehaviour
 
             if (Contador5 == 2) { objectBrushRadii[4] += 5.0f;  Trigger5.transform.localScale = Trigger5.transform.localScale * 1.5f; }
             if (Contador5 == 1) { objectBrushRadii[4] += 5.0f;  Trigger5.transform.localScale = Trigger5.transform.localScale * 1.5f; }
+            int randomState = Random.Range(1, 6);
+
+            string triggerName = "Talk " + randomState;
+
+            animatorAprensivo.SetTrigger(triggerName);
             Contador5++;
 
         }
@@ -544,6 +566,11 @@ public class RayCast1 : MonoBehaviour
            
             if (Contador5 == 0) { objectBrushRadii[4] += 5.0f; Trigger5.transform.localScale = Trigger5.transform.localScale * 1.5f; }
             if (Contador5 == 1) { objectBrushRadii[4] += 5.0f;  Trigger5.transform.localScale = Trigger5.transform.localScale * 1.5f; }
+            int randomState = Random.Range(1, 6);
+
+            string triggerName = "Talk " + randomState;
+
+            animatorAprensivo.SetTrigger(triggerName);
             Contador5++;
 
         }
@@ -562,6 +589,7 @@ public class RayCast1 : MonoBehaviour
             postProcessVolume.profile.TryGetSettings(out Vignette vignette);
             vignette.intensity.value = 0.7f;
             PlayerC.DentroCirculo = true;
+
 
         }
 
@@ -639,7 +667,7 @@ public class RayCast1 : MonoBehaviour
                 float brushRadius = objectBrushRadii[i];
 
                 Ray ray = new Ray(obj.transform.position, Vector3.down);
-                Debug.DrawRay(obj.transform.position, Vector3.down * 50f, Color.green); // Dibuja el raycast
+                //Debug.DrawRay(obj.transform.position, Vector3.down * 50f, Color.green); // Dibuja el raycast
 
                 RaycastHit[] hits = Physics.RaycastAll(ray);
                 foreach (var hit in hits)

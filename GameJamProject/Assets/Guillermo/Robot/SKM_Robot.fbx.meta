@@ -181,8 +181,8 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: ANI_Robot_03_Talk2_1
-      takeName: ANI_Robot_03_Talk2_1.001
+      name: ANI_Robot_03_Talk2_1 (1)
+      takeName: ANI_Robot_03_Talk2_1
       internalID: -2721406849798750840
       firstFrame: 0
       lastFrame: 21

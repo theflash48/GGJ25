@@ -63,8 +63,10 @@ public class PlayerController : MonoBehaviour
 
             controller.Move(speed * Time.deltaTime * movement);
         }
+        else { animator.Play("ANI_Robot_01_Idle");Debug.Log("Anim"); }
         
     }
+
 
     public void SetPlayerState(PlayerState s)
     {
