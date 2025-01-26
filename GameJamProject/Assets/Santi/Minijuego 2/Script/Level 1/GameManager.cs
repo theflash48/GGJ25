@@ -12,8 +12,7 @@ public class GameManager : MonoBehaviour
     private float timer;
 
     public Text timerText; // Texto del temporizador
-    public Text scoreText; // Texto de puntuación
-    private int score = 0;
+    public Text levelText; // Texto del nivel
 
     public BubbleSpawner bubbleSpawner; // Referencia al generador de burbujas
 
@@ -33,11 +32,17 @@ public class GameManager : MonoBehaviour
     {
         // Actualizar el temporizador
         timer -= Time.deltaTime;
-        timerText.text = "Time: " + Mathf.Ceil(timer).ToString();
 
+        // Asegurar que el tiempo no sea negativo
+        if (timer < 0) timer = 0;
+
+        // Mostrar tiempo en segundos con 3 decimales
+        timerText.text = "Time: " + timer.ToString("F3");
+
+        // Finalizar nivel si el tiempo llega a 0
         if (timer <= 0)
         {
-            EndLevel(true); // El jugador gana si el tiempo llega a 0
+            EndLevel(true);
         }
     }
 
@@ -45,8 +50,8 @@ public class GameManager : MonoBehaviour
     {
         if (bubble.bubbleType < validBubbleCount) // Burbuja válida
         {
-            score++;
-            scoreText.text = "Score: " + score.ToString();
+            Debug.Log("¡Burbuja correcta!");
+            // Aquí podrías agregar puntos al jugador
         }
         else // Burbuja incorrecta
         {

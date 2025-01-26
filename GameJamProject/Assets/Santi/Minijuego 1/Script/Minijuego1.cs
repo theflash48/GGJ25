@@ -108,6 +108,7 @@ public class Minijuego1 : MonoBehaviour
                     if (i != numeroSeleccionado)
                     {
                         DesactivarCubo(i);
+                        
                     }
                 }
                 EndGame();
