@@ -16,6 +16,7 @@ public class RayCast1 : MonoBehaviour
     private int ContadorPreguntas, ContadorPreguntas1;
     public int Contador1, Contador2, Contador3, Contador4, Contador5;
     private CameraFolllow FollowCamera;
+    public GameObject Barrera, Barrera1, Barrera2, Barrera3, Barrera4;
 
     public Animator animatorIra;
     public Animator animatorSoledad;
@@ -40,6 +41,8 @@ public class RayCast1 : MonoBehaviour
 
     public float scaleSpeed = 1f;
 
+    private PlayerController PlayerC;
+
     void Start()
     {
 
@@ -49,6 +52,7 @@ public class RayCast1 : MonoBehaviour
         texture = new Texture2D(textureSize, textureSize);
         planeRenderer = GetComponent<Renderer>();
         FollowCamera = FindAnyObjectByType<CameraFolllow>();
+        PlayerC = FindAnyObjectByType<PlayerController>();
 
         // Inicializar la textura con el color predeterminado
         ClearTexture();
@@ -124,6 +128,7 @@ public class RayCast1 : MonoBehaviour
             EstoyPregunta1 = true;
             postProcessVolume.profile.TryGetSettings(out Vignette vignette);
             vignette.intensity.value = 0.7f;
+            PlayerC.DentroCirculo = true;
 
             FollowCamera.PlayerIn = false;
         }
@@ -169,9 +174,9 @@ public class RayCast1 : MonoBehaviour
             }
 
             if (objectBrushRadii[0] == 20.0f) {  EstoyPregunta1 = false; ActivarCanvas.SetActive(false); postProcessVolume.profile.TryGetSettings(out Vignette vignette);
-                vignette.intensity.value = 0.0f; FollowCamera.PlayerIn = true;
+                vignette.intensity.value = 0.0f; FollowCamera.PlayerIn = true; Destroy(Barrera); PlayerC.DentroCirculo = false;
             }
-            if (objectBrushRadii[0] < 20.0f && Contador1 == 4) { objectBrushRadii[0] = 0.0f; EstoyPregunta1 = false; Destroy(Trigger1); }
+            if (objectBrushRadii[0] < 20.0f && Contador1 == 4) { objectBrushRadii[0] = 0.0f; EstoyPregunta1 = false; Destroy(Trigger1); Destroy(Barrera); PlayerC.DentroCirculo = false; }
         }
         if (EstoyPregunta2) {
             if (Contador2 == 0)
@@ -207,9 +212,9 @@ public class RayCast1 : MonoBehaviour
             }
 
             if (objectBrushRadii[1] == 20.0f) {  EstoyPregunta2 = false; ActivarCanvas.SetActive(false); postProcessVolume.profile.TryGetSettings(out Vignette vignette);
-                vignette.intensity.value = 0.0f; FollowCamera.PlayerIn1 = true;
+                vignette.intensity.value = 0.0f; FollowCamera.PlayerIn1 = true; Destroy(Barrera1); PlayerC.DentroCirculo = false;
             }
-            if (objectBrushRadii[1] < 20.0f && Contador2 == 4) { objectBrushRadii[1] = 0.0f; EstoyPregunta2 = false; Destroy(Trigger2); }
+            if (objectBrushRadii[1] < 20.0f && Contador2 == 4) { objectBrushRadii[1] = 0.0f; EstoyPregunta2 = false; Destroy(Trigger2); Destroy(Barrera1); PlayerC.DentroCirculo = false; }
         }
 
         ///////////////////////
@@ -250,9 +255,9 @@ public class RayCast1 : MonoBehaviour
             }
 
             if (objectBrushRadii[2] == 20.0f) {  EstoyPregunta3 = false; ActivarCanvas.SetActive(false); postProcessVolume.profile.TryGetSettings(out Vignette vignette);
-                vignette.intensity.value = 0.0f; FollowCamera.PlayerIn2 = true;
+                vignette.intensity.value = 0.0f; FollowCamera.PlayerIn2 = true; Destroy(Barrera2); PlayerC.DentroCirculo = false;
             }
-            if (objectBrushRadii[2] < 20.0f && Contador3 == 4) { objectBrushRadii[2] = 0.0f; EstoyPregunta3 = false; Destroy(Trigger3); }
+            if (objectBrushRadii[2] < 20.0f && Contador3 == 4) { objectBrushRadii[2] = 0.0f; EstoyPregunta3 = false; Destroy(Trigger3); Destroy(Barrera2); PlayerC.DentroCirculo = false; }
         }
         if (EstoyPregunta4)
         {
@@ -291,9 +296,9 @@ public class RayCast1 : MonoBehaviour
             }
 
             if (objectBrushRadii[3] == 20.0f) {  EstoyPregunta4 = false; ActivarCanvas.SetActive(false); postProcessVolume.profile.TryGetSettings(out Vignette vignette);
-                vignette.intensity.value = 0.0f; FollowCamera.PlayerIn3 = true;
+                vignette.intensity.value = 0.0f; FollowCamera.PlayerIn3 = true; Destroy(Barrera3); PlayerC.DentroCirculo = false;
             }
-            if (objectBrushRadii[3] < 20.0f && Contador4 == 4) { objectBrushRadii[3] = 0.0f; EstoyPregunta4 = false; Destroy(Trigger4); }
+            if (objectBrushRadii[3] < 20.0f && Contador4 == 4) { objectBrushRadii[3] = 0.0f; EstoyPregunta4 = false; Destroy(Trigger4); Destroy(Barrera3); PlayerC.DentroCirculo = false; }
         }
         if (EstoyPregunta5)
         {
@@ -331,9 +336,9 @@ public class RayCast1 : MonoBehaviour
             }
 
             if (objectBrushRadii[4] == 20.0f) {  EstoyPregunta5 = false; ActivarCanvas.SetActive(false); postProcessVolume.profile.TryGetSettings(out Vignette vignette);
-                vignette.intensity.value = 0.0f; FollowCamera.PlayerIn4 = true;
+                vignette.intensity.value = 0.0f; FollowCamera.PlayerIn4 = true; Destroy(Barrera4); PlayerC.DentroCirculo = false;
             }
-            if (objectBrushRadii[4] < 20.0f && Contador5 == 4) { objectBrushRadii[4] = 0.0f; EstoyPregunta5 = false; Destroy(Trigger5); }
+            if (objectBrushRadii[4] < 20.0f && Contador5 == 4) { objectBrushRadii[4] = 0.0f; EstoyPregunta5 = false; Destroy(Trigger5); Destroy(Barrera4); PlayerC.DentroCirculo = false; }
 
         }
 
@@ -538,6 +543,7 @@ public class RayCast1 : MonoBehaviour
             FollowCamera.PlayerIn1 = false;
             postProcessVolume.profile.TryGetSettings(out Vignette vignette);
             vignette.intensity.value = 0.7f;
+            PlayerC.DentroCirculo = true;
 
         }
 
@@ -554,6 +560,7 @@ public class RayCast1 : MonoBehaviour
             FollowCamera.PlayerIn2 = false;
             postProcessVolume.profile.TryGetSettings(out Vignette vignette);
             vignette.intensity.value = 0.7f;
+            PlayerC.DentroCirculo = true;
 
         }
         // Aquí puedes agregar la lógica adicional que desees
@@ -567,6 +574,7 @@ public class RayCast1 : MonoBehaviour
             FollowCamera.PlayerIn3 = false;
             postProcessVolume.profile.TryGetSettings(out Vignette vignette);
             vignette.intensity.value = 0.7f;
+            PlayerC.DentroCirculo = true;
         }
         // Aquí puedes agregar la lógica adicional que desees
     }
@@ -579,6 +587,7 @@ public class RayCast1 : MonoBehaviour
             FollowCamera.PlayerIn4 = false;
             postProcessVolume.profile.TryGetSettings(out Vignette vignette);
             vignette.intensity.value = 0.7f;
+            PlayerC.DentroCirculo = true;
 
         }
         // Aquí puedes agregar la lógica adicional que desees
@@ -590,7 +599,6 @@ public class RayCast1 : MonoBehaviour
     {
         FuntionActive();
         CargaTextosDialogo1();
-        Debug.Log(Contador4);
     }
 
     public void FuntionActive()
