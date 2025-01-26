@@ -37,7 +37,9 @@ public class GameManager : MonoBehaviour
         if (timer < 0) timer = 0;
 
         // Mostrar tiempo en segundos con 3 decimales
-        timerText.text = "Time: " + timer.ToString("F3");
+        timerText.text = timer.ToString("F3");
+        // Mostrar el nivel actual
+        levelText.text = $"Nivel {currentLevel}";
 
         // Finalizar nivel si el tiempo llega a 0
         if (timer <= 0)
