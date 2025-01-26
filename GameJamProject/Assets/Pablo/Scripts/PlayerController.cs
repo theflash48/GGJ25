@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public float rotationSmoothTime;
     public float targetRotation;
     public bool movementActive;
+    public float gravity;
     public enum PlayerState { idle, walk };
     public PlayerState playerState;
 
@@ -55,7 +56,7 @@ public class PlayerController : MonoBehaviour
         float rotation = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetRotation, ref rotationSpeed, rotationSmoothTime);
 
         transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
-        Vector3 movement = new Vector3(movementVector2.x, 0, movementVector2.y).normalized;
+        Vector3 movement = new Vector3(movementVector2.x, -2, movementVector2.y).normalized;
 
         controller.Move(speed * Time.deltaTime * movement);
     }

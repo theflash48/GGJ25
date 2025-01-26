@@ -604,6 +604,7 @@ MonoBehaviour:
   rotationSmoothTime: 0.1
   targetRotation: 0
   movementActive: 0
+  gravity: -5
   playerState: 0
 --- !u!136 &6456385553167997374
 CapsuleCollider:
