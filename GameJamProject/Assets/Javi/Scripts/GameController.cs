@@ -1,6 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Video;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -45,11 +46,13 @@ public class GameController : MonoBehaviour
 
     private void Intro()
     {
+        SceneManager.LoadSceneAsync(1);
         vP.Play();
-        Invoke("Wait", 21f);
-        panelMenu.SetActive(false);
+        if (vP.isPlaying)
+        {
+            Invoke("Wait", 22f);
+        } 
     }
-
     private void Gameplay()
     {
         panelMenu.SetActive(false);

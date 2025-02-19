@@ -8,6 +8,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Javi/MainScene.unity
     guid: 8e25eb7b3f685e849811acf1824f188c
+  - enabled: 1
+    path: Assets/Santi/Videos/Video Intro.unity
+    guid: dc94a2f79ee5dcf41875c4d203f31911
+  - enabled: 1
+    path: Assets/Santi/Minijuego 1/Minijuego 1.unity
+    guid: d4b79f0126391b243994f4e23708664e
+  - enabled: 1
+    path: Assets/Santi/Minijuego 2/Minijuego 2.unity
+    guid: b650431d28fd10748b93d0182f535e6e
+  - enabled: 1
+    path: Assets/Santi/Videos/Video Final.unity
+    guid: cb3a309f9d761e34ba48e099f315c42d
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 289c1b55c9541489481df5cc06664110, type: 3}
   m_UseUCBPForAssetBundles: 0
